@@ -1,16 +1,15 @@
 const findTheOldest = function(people) {
-    let oldest = people[0];
 
-    for(let i = 0; i < people.length; i++){
-        let oldestAge = getAge(oldest.yearOfBirth, oldest.yearOfDeath);
-        let personAge = getAge( people[i].yearOfBirth, people[i].yearOfDeath);
+    return people.reduce(function(oldest, person){
+        const oldestAge = getAge(oldest.yearOfBirth, oldest.yearOfDeath);
+        const personAge = getAge(person.yearOfBirth, person.yearOfDeath);
 
         if(oldestAge < personAge){
-            oldest = people[i];
+            oldest = person;
         }
-    }
 
-    return oldest;
+        return oldest;
+    });
 };
 
 function getAge(yearOfBirth, yearOfDeath){
